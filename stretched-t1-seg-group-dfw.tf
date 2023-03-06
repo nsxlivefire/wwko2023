@@ -52,12 +52,6 @@ resource "nsxt_policy_group" "g-web-stretched" {
   display_name = "g-web-stretched"
   description  = "Stretched Global web group"
   nsx_id = "g-web-stretched"
-  tag {
-      scope = "webapp"
-      tag = "web"
-       }
-
-
   criteria {
    condition {
       key         = "Tag"
@@ -65,19 +59,13 @@ resource "nsxt_policy_group" "g-web-stretched" {
       operator    = "EQUALS"
       value       = "webapp|web"
      }
-           }
+  }
 }
 resource "nsxt_policy_group" "g-db-stretched" {
   provider = nsxt.gm-site-a
   display_name = "g-db-stretched"
   description  = "Stretched Global db group"
   nsx_id = "g-db-stretched"
-  tag {
-      scope = "webapp"
-      tag = "db"
-       }
-
-
   criteria {
    condition {
       key         = "Tag"
@@ -85,7 +73,7 @@ resource "nsxt_policy_group" "g-db-stretched" {
       operator    = "EQUALS"
       value       = "webapp|db"
      }
-           }
+  }
 }
 
 # Create 2-Tier webapp Global DFW rule
